@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:41:37 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/10 16:33:32 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:33:53 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,19 @@ void	Bureaucrat::decrementGrade( void )
 	if ( _grade + 1 > MIN_GRADE )
 		throw Bureaucrat::GradeTooLowException();
 	_grade++;
+}
+
+void	Bureaucrat::signForm( Form& form ) const
+{
+	try
+	{
+		form.beSigned( *this );
+		std::cout << _name << " signed " << form.getName() << std::endl;
+	}
+	catch ( std::exception& e )
+	{
+		std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
 }
 
 std::ostream&	operator<<( std::ostream& out, const Bureaucrat& bureaucrat )

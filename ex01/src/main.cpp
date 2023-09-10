@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:53:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/10 16:49:20 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:45:32 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	testModifyGrade( unsigned int mode, unsigned int grade, unsigned int n )
 	std::cout << "\t[ END ]: Juan stats -> " << Juan << std::endl;
 }
 
-int	main( void )
+void	ex00Test( void )
 {
 	int	catched;
 
@@ -138,6 +138,10 @@ int	main( void )
 	std::cout << "Test getGrade method: Bureaucrat\tJuan( \"Juan\", " << MID_GRADE << " )"  << std::endl;
 	std::cout << "Grade: " << Juan.getGrade() << std::endl;
 	std::cout << "End of test\n"  << std::endl;
+}
 
+int	main( void )
+{
+	Form	
 	return ( 0 );
 }
