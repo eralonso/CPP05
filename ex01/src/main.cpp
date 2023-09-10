@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:53:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/10 17:45:32 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:58:55 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define INCREMENT 0
 #define DECREMENT 1
 
-Bureaucrat	testConstructorGrade( unsigned int grade, int& catched )
+/*Bureaucrat	testConstructorGrade( unsigned int grade, int& catched )
 {
 	Bureaucrat	Joan( "Juan", MIN_GRADE );
 
@@ -139,9 +139,36 @@ void	ex00Test( void )
 	std::cout << "Grade: " << Juan.getGrade() << std::endl;
 	std::cout << "End of test\n"  << std::endl;
 }
+*/
+
+Form	testConstructorGrade( unsigned int execGrade, unsigned int signGrade, int& catched )
+{
+	Form	Joan( "Unnamed Form", MIN_GRADE, MIN_GRADE );
+
+	catched = 0;
+	try
+	{
+		Form	Juan( "Juan's Form", signGrade, execGrade );
+		return ( Juan );
+	}
+	catch ( std::exception& e )
+	{
+		std::cout << "\tcatch: " << e.what() << std::endl;
+		catched = 1;
+	}
+	return ( Joan );
+}
 
 int	main( void )
 {
-	Form	
+	int	catched;
+
+	//Constructor Tests
+	
+	//	Out of range Grades
+	std::cout << "Test too low signGrade in constructor: Form\t" \
+		<< "Juan( \"Juan's Form\", 151, " << MID_GRADE << " )"  << std::endl;
+	testConstructorGrade( 151, MID_GRADE, catched );
+	std::cout << "End of test\n"  << std::endl;
 	return ( 0 );
 }

@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:58:06 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/10 17:36:58 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/10 18:04:10 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ class Form
 			const char * what () const throw ()
 			{
 				const std::string	message = _msg + "Grade too high";
-				const char			*ret = message.c_str();
-				return ( ret );
+				//const char			*ret = message.c_str();
+				return ( message.c_str() );
+				//return ( ret );
 			}
 		};
 		class GradeTooLowException: public std::exception
@@ -65,8 +66,9 @@ class Form
 			const char * what () const throw ()
 			{
 				const std::string	message = _msg + "Grade too low";
-				const char			*ret = message.c_str();
-				return ( ret );
+				//const char			*ret = message.c_str();
+				return ( message.c_str() );
+				//return ( ret );
 			}
 		};
 		class FormIsSignedException: public std::exception
