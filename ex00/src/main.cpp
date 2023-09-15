@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:53:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/10 16:49:20 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/11 10:55:32 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Bureaucrat	testConstructorGrade( unsigned int grade, int& catched )
 		Bureaucrat	Juan( "Juan", grade );
 		return ( Juan );
 	}
-	catch ( std::exception& e )
+	catch ( std::out_of_range& e )
 	{
 		std::cout << "\tcatch: " << e.what() << std::endl;
 		catched = 1;
@@ -63,7 +63,7 @@ void	testModifyGrade( unsigned int mode, unsigned int grade, unsigned int n )
 	{
 		iterGrade( Juan, n, mode );
 	}
-	catch ( std::exception& e )
+	catch ( std::out_of_range& e )
 	{
 		std::cout << "\tcatch: " << e.what() << std::endl;
 	}

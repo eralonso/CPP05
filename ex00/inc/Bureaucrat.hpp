@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +7,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:31:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/10 16:41:42 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/11 10:35:12 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +36,15 @@ class Bureaucrat
 		unsigned int	getGrade( void ) const;
 		void			incrementGrade( void );
 		void			decrementGrade( void );
-		class GradeTooHighException: public std::exception
+		class GradeTooHighException: public std::out_of_range
 		{
-			const char * what () const throw ()
-			{
-				return ( "Grade too high" );
-			}
+			public:
+				GradeTooHighException( std::string error_msg );
 		};
-		class GradeTooLowException: public std::exception
+		class GradeTooLowException: public std::out_of_range
 		{
-			const char * what () const throw ()
-			{
-				return ( "Grade too low" );
-			}
+			public:
+				GradeTooLowException( std::string error_msg );
 		};
 };
 
