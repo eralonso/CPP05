@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:31:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/11 10:49:34 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/16 13:48:15 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class Bureaucrat
 		void			incrementGrade( void );
 		void			decrementGrade( void );
 		void			signForm( Form& form ) const;
+		void			executeForm( const AForm& form ) const;
 		class GradeTooHighException: public std::out_of_range
 		{
 			public:

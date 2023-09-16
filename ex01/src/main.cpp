@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:53:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/15 19:00:50 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/16 13:08:38 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Bureaucrat	testConstructorBureaucratGrade( unsigned int grade, int& catched )
 		Bureaucrat	Juan( "Juan", grade );
 		return ( Juan );
 	}
-	catch ( std::exception& e )
+	catch ( std::out_of_range& e )
 	{
 		std::cout << "\tcatch: " << e.what() << std::endl;
 		catched = 1;

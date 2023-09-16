@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 16:58:06 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/15 19:01:01 by eralonso         ###   ########.fr       */
+/*   Created: 2023/09/16 13:35:22 by eralonso          #+#    #+#             */
+/*   Updated: 2023/09/16 13:37:33 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FORM_H__
-# define __FORM_H__
+#ifndef __AFORM_H__
+# define __AFORM_H__
 
 # include <string>
 # include <iostream>
@@ -19,7 +19,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		const std::string	_name;
@@ -29,11 +29,12 @@ class Form
 		void				checkValidGrade( unsigned int grade, unsigned int min, \
 							unsigned int max, std::string msg ) const;
 	public:
-		Form( void );
-		Form( std::string name, unsigned int _signGrade, unsigned int _execGrade );
-		Form( const Form& form );
-		~Form( void );
-		Form&			operator=( const Form& form );
+		AForm( void );
+		AForm( std::string name, unsigned int _signGrade, unsigned int _execGrade );
+		AForm( const Form& form );
+		~AForm( void );
+		AForm&			operator=( const AForm& form );
+		void			execute( const Bureaucrat& executor ) const;
 		std::string		getName( void ) const;
 		bool			getIsSigned( void ) const;
 		unsigned int	getSignGrade( void ) const;
@@ -57,6 +58,6 @@ class Form
 
 };
 
-std::ostream&	operator<<( std::ostream& out, const Form& form );
+std::ostream&	operator<<( std::ostream& out, const AForm& form );
 
 #endif

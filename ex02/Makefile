@@ -6,7 +6,7 @@
 #    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/22 10:08:41 by eralonso          #+#    #+#              #
-#    Updated: 2023/09/15 19:02:23 by eralonso         ###   ########.fr        #
+#    Updated: 2023/09/16 13:39:49 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ SRC_DIRS	:=	$(addprefix $(SRC_ROOT),$(SRC_DIRS))
 SRC_DIRS	:=	$(subst $(SPACE),:,$(SRC_DIRS))
 
 #<--------------------------------->FILES<---------------------------------->#
-FILES		:=	main Bureaucrat Form
+FILES		:=	main Bureaucrat AForm
 
 #<---------------------------------->LANG<---------------------------------->#
 LANG		:=	CPP
