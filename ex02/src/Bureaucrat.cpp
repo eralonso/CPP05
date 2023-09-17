@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:41:37 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/15 19:00:56 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/17 13:59:42 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	Bureaucrat::decrementGrade( void )
 	_grade++;
 }
 
-void	Bureaucrat::signForm( Form& form ) const
+void	Bureaucrat::signForm( AForm& form ) const
 {
 	try
 	{
@@ -73,6 +73,19 @@ void	Bureaucrat::signForm( Form& form ) const
 	catch ( std::exception& e )
 	{
 		std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm( const AForm& form ) const
+{
+	try
+	{
+		form.execute( *this );
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch ( std::logic_error& e )
+	{
+		std::cout << _name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 

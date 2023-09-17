@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:53:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/11 10:55:32 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:05:11 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,15 @@ int	main( void )
 	std::cout << "End of test\n"  << std::endl;
 	
 	//	Valid Grades
-	std::cout << "Test MAX_GRADE (" << MAX_GRADE << ") constrcutor: Bureaucrat\tJuan( \"Juan\", " << MAX_GRADE << " )"  << std::endl;
+	std::cout << "Test MAX_GRADE (" << MAX_GRADE << ") constructor: Bureaucrat\tJuan( \"Juan\", " << MAX_GRADE << " )"  << std::endl;
 	testConstructorGrade( MAX_GRADE, catched );
 	std::cout << "End of test\n"  << std::endl;
 
-	std::cout << "Test MIN_GRADE (" << MIN_GRADE << ") constrcutor: Bureaucrat\tJuan( \"Juan\", " << MIN_GRADE << " )"  << std::endl;
+	std::cout << "Test MIN_GRADE (" << MIN_GRADE << ") constructor: Bureaucrat\tJuan( \"Juan\", " << MIN_GRADE << " )"  << std::endl;
 	testConstructorGrade( MIN_GRADE, catched );
 	std::cout << "End of test\n"  << std::endl;
 
-	std::cout << "Test MID_GRADE " << MID_GRADE << " constrcutor: Bureaucrat\tJuan( \"Juan\", " << MID_GRADE << " )"  << std::endl;
+	std::cout << "Test MID_GRADE " << MID_GRADE << " constructor: Bureaucrat\tJuan( \"Juan\", " << MID_GRADE << " )"  << std::endl;
 	testConstructorGrade( MID_GRADE, catched );
 	std::cout << "End of test\n"  << std::endl;
 

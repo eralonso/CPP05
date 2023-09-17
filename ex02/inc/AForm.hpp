@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:35:22 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/16 13:37:33 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/17 14:15:25 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,20 @@ class AForm
 		const unsigned int	_execGrade;
 		void				checkValidGrade( unsigned int grade, unsigned int min, \
 							unsigned int max, std::string msg ) const;
+	protected:
+		virtual void		FormExecute( void ) const = 0;
 	public:
 		AForm( void );
 		AForm( std::string name, unsigned int _signGrade, unsigned int _execGrade );
-		AForm( const Form& form );
-		~AForm( void );
+		AForm( const AForm& form );
+		virtual ~AForm( void );
 		AForm&			operator=( const AForm& form );
-		void			execute( const Bureaucrat& executor ) const;
 		std::string		getName( void ) const;
 		bool			getIsSigned( void ) const;
 		unsigned int	getSignGrade( void ) const;
 		unsigned int	getExecGrade( void ) const;
 		void			beSigned( const Bureaucrat& bureaucrat );
+		void			execute( const Bureaucrat& executor ) const;
 		class GradeTooHighException: public std::out_of_range
 		{
 			public:
@@ -55,7 +57,11 @@ class AForm
 			public:
 				FormIsSignedException( std::string error_msg );
 		};
-
+		class FormIsNotSignedException: public std::logic_error
+		{
+			public:
+				FormIsNotSignedException( std::string error_msg );
+		};
 };
 
 std::ostream&	operator<<( std::ostream& out, const AForm& form );

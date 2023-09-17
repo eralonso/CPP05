@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:31:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/16 13:48:15 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/17 13:57:56 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include <string>
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 # define MIN_GRADE 150
 # define MAX_GRADE 1
 # define MID_GRADE ((MAX_GRADE - MIN_GRADE) / 2 + MIN_GRADE)
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -38,7 +38,7 @@ class Bureaucrat
 		unsigned int	getGrade( void ) const;
 		void			incrementGrade( void );
 		void			decrementGrade( void );
-		void			signForm( Form& form ) const;
+		void			signForm( AForm& form ) const;
 		void			executeForm( const AForm& form ) const;
 		class GradeTooHighException: public std::out_of_range
 		{

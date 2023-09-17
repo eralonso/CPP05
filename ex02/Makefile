@@ -6,7 +6,7 @@
 #    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/22 10:08:41 by eralonso          #+#    #+#              #
-#    Updated: 2023/09/16 13:39:49 by eralonso         ###   ########.fr        #
+#    Updated: 2023/09/17 18:30:59 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ SRC_DIRS	:=	$(addprefix $(SRC_ROOT),$(SRC_DIRS))
 SRC_DIRS	:=	$(subst $(SPACE),:,$(SRC_DIRS))
 
 #<--------------------------------->FILES<---------------------------------->#
-FILES		:=	main Bureaucrat AForm
+FILES		:=	main Bureaucrat AForm ShrubberyCreationForm \
+				RobotomyRequestForm PresidentialPardonForm
 
 #<---------------------------------->LANG<---------------------------------->#
 LANG		:=	CPP
@@ -139,7 +140,7 @@ re :
 	$(MAKE) $(MKFLAGS) fclean
 	$(MAKE) $(MKFLAGS) all
 	echo ""
-	echo "$(CIAN)$(NAME) has been recompiled$(DEF_COLOR)"
+	echo "$(CIAN)$(PRENAME) has been recompiled$(DEF_COLOR)"
 
 .PHONY : all clean fclean re
 

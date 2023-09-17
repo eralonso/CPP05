@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:53:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/16 13:08:38 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/16 17:04:33 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void	doFormGetterTest( unsigned int testNumber, std::string testName, \
 								Form form, unsigned int mode )
 {
 	std::cout << "Test " << testNumber << ": " << testName << " in constructor: Form\t" \
-		<< "form( \"" << form.getName() << "\", " << form.getSignGrade() <<  ", " \
-		<< form.getExecGrade() << " )"  << std::endl;
+		<< "form( \"Juan's Form\", " << MID_GRADE <<  ", " << MIN_GRADE << " )"  << std::endl;
 	switch ( mode )
 	{
 		case GET_NAME:

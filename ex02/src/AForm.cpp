@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eralonso <eralonso@student.42barcel>       +#+  +:+       +#+        */
+/*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:39:22 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/16 13:39:26 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/17 14:15:42 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ AForm::GradeTooLowException::GradeTooLowException( std::string error_msg ): \
 
 AForm::FormIsSignedException::FormIsSignedException( std::string error_msg ): \
 						std::logic_error( error_msg + "Form Is Signed" ) {}
+AForm::FormIsNotSignedException::FormIsNotSignedException( std::string error_msg ): \
+						std::logic_error( error_msg + "Form Is Not Signed" ) {}
 
 AForm::AForm( void ): _name( "Unnamed Form" ), _isSigned( false ), _signGrade( MIN_GRADE ), _execGrade( MIN_GRADE ) {}
 
@@ -31,9 +33,9 @@ AForm::AForm( std::string name, unsigned int signGrade, unsigned int execGrade )
 
 AForm::AForm( const AForm& form ): _name( form._name ), _isSigned( form._isSigned ), _signGrade( form._signGrade ), _execGrade( form._execGrade ) {}
 
-AForm::~Form( void ) {}
+AForm::~AForm( void ) {}
 
-Form&	AForm::operator=( const AForm& form )
+AForm&	AForm::operator=( const AForm& form )
 {
 	_isSigned = form._isSigned;
 	return ( *this );
@@ -73,6 +75,15 @@ void	AForm::beSigned( const Bureaucrat& bureaucrat )
 	if ( _isSigned == true )
 		throw AForm::FormIsSignedException( "" );
 	_isSigned = true;
+}
+
+void	AForm::execute( const Bureaucrat& executor ) const
+{
+	if ( executor.getGrade() > _execGrade )
+		throw AForm::GradeTooLowException( "Exec " );
+	if ( _isSigned == false )
+		throw AForm::FormIsNotSignedException( "" );
+	FormExecute();
 }
 
 std::ostream&	operator<<( std::ostream& out, const AForm& form )
