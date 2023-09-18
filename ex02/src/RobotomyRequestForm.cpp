@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 18:20:02 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/17 18:24:43 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/18 12:08:20 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ std::string	RobotomyRequestForm::getTarget( void ) const
 void	RobotomyRequestForm::FormExecute( void ) const
 {
 	std::cout << "Some drilling noise [ bbbbbzzzzzzzzzzzzzzzzzzb ] ... -> " \
-				<< (rand() % 2 == 0 ? _target + "has been robotomized successfully" : \
+				<< (rand() % 2 == 0 ? _target + " has been robotomized successfully" : \
 				"robotomy failed with " + _target ) << std::endl;
 }
 
