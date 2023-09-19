@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:53:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/18 12:47:43 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:54:42 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <fcntl.h>
 #include <unistd.h>
 
@@ -29,122 +30,41 @@
 #define C_PURPLE	"\033[1;38;2;150;25;250m"
 
 // Utils
-void	doCheckFormGradeTest( unsigned int& testNumber, AForm* form, unsigned int signExpectedValue, unsigned int execExpectedValue )
+void	doInternMakeFormTest( unsigned int& testNumber, std::string testName, std::string formName, std::string target )
 {
-	std::cout << C_BLUE << "Test " << testNumber++ << ": " << C_PINK << "Check sign grade in " << form->getName() << " class: " \
-				<< form->getName() << "\tform" << C_WHITE << std::endl;
-	std::cout << "\tExpected value: " << signExpectedValue << " | Resultant value: " << form->getSignGrade() << std::endl;
-	std::cout << "End of test\n" << std::endl;
-	std::cout << C_BLUE << "Test " << testNumber++ << ": " << C_PINK << "Check exec grade in " << form->getName() << " class: " \
-				<< form->getName() << "\tform" << C_WHITE << std::endl;
-	std::cout << "\tExpected value: " << execExpectedValue << " | Resultant value: " << form->getExecGrade() << std::endl;
+	Intern	intern;
+
+	std::cout << C_BLUE << "Test " << testNumber++ << ": " << C_PINK << "" << testName \
+				<< " in makeForm method: intern.makeForm( " << formName << ", " << target \
+				<< " )" << C_WHITE << std::endl;
+	AForm	*form = intern.makeForm( formName, target );
+	std::cout << C_CYAN << "[ RES ] " << C_WHITE << " form stats -> " << form \
+				<< ( form != NULL ? " && Target: " + static_cast< ShrubberyCreationForm * >( form )->getTarget() : "" ) << std::endl;
 	std::cout << C_BLUE << "End of test\n" << C_WHITE << std::endl;
+	if ( form )
+		delete form;
 }
 
-void	doExecuteFormTest( unsigned int& testNumber, std::string testName, Bureaucrat Juan, AForm* form )
+//Tests
+void	testsInternMakeForm( void )
 {
-	std::cout << C_BLUE << "Test " << testNumber++ << ": " << C_PINK << "" << testName << " in executeForm method with \"" << form->getName() << "\" form: " \
-				<< "Bureaucrat\tJuan( \"" << Juan.getName() << "\", " << Juan.getGrade() << " ) && " << form->getName() << "\tform( \"" \
-				<< static_cast<ShrubberyCreationForm *>(form)->getTarget() << "\" )" << C_WHITE << std::endl;
-	std::cout << C_GREEN << "[ BEFORE ] " << C_WHITE << "form stats -> " << *static_cast<ShrubberyCreationForm *>(form) << std::endl;
-	std::cout << "\t";
-	Juan.executeForm( *form );
-	std::cout << C_CYAN << "[ AFTER ] " << C_WHITE << " form stats -> " << *static_cast<ShrubberyCreationForm *>(form) << std::endl;
-	std::cout << C_BLUE << "End of test\n" << C_WHITE << std::endl;
-}
-
-// Tests
-void	testsSCFGrades( void )
-{
-	AForm			*SCForm = new ShrubberyCreationForm;
-	AForm			*RRForm = new RobotomyRequestForm;
-	AForm			*PPForm = new PresidentialPardonForm;
 	unsigned int	testNumber;
 
-	testNumber = 0;
+	// Invalid forms
+	doInternMakeFormTest( testNumber, "Invalid form", "shrubery cation", "SCInvalidFTarget" );
 
-	//Check correct grades for ShrubberyCreationForm
+	doInternMakeFormTest( testNumber, "Invalid form", "robotomy request ", "RRInvalidFTarget" );
 
-	doCheckFormGradeTest( testNumber, SCForm, SCF_SIGN_GRADE, SCF_EXEC_GRADE );
+	doInternMakeFormTest( testNumber, "Invalid form", "Presidential pardon", "PPInvalidFTarget" );
 
-	//Check correct grades for RobotomyRequestForm
 
-	doCheckFormGradeTest( testNumber, RRForm, RRF_SIGN_GRADE, RRF_EXEC_GRADE );
+	// Valid forms
+	doInternMakeFormTest( testNumber, "Valid ShrubberyCreationForm", "shrubbery creation", "SCFTarget" );
 
-	//Check correct grades for PresidentialPardonForm
+	doInternMakeFormTest( testNumber, "Valid RobotomyRequestForm", "robotomy request", "RRFTarget" );
 
-	doCheckFormGradeTest( testNumber, PPForm, PPF_SIGN_GRADE, PPF_EXEC_GRADE );
+	doInternMakeFormTest( testNumber, "Valid PresidentialPardonForm", "presidential pardon", "PPFTarget" );
 
-	//Clean all dynamic allocated memory
-	delete SCForm;
-	delete RRForm;
-	delete PPForm;
-}
-
-void	testsBureaucratExecuteForm( void )
-{
-	AForm			*SCForm = new ShrubberyCreationForm( "testSCF" );
-	AForm			*SCFormFile = new ShrubberyCreationForm( "testSCFFail" );
-	AForm			*RRForm = new RobotomyRequestForm( "testRRF" );
-	AForm			*PPForm = new PresidentialPardonForm( "testPPF" );
-	Bureaucrat		JuanMin( "Mini Juan", MIN_GRADE );
-	Bureaucrat		JuanMid( "Medium Juan", MID_GRADE );
-	Bureaucrat		JuanMax( "Maximun Juan", MAX_GRADE );
-	int				invalidFile;
-	unsigned int	testNumber;
-
-	testNumber = 0;
-
-	//Check correct execute for ShrubberyCreationForm
-
-	std::cout << C_PURPLE << "\t\t[ TEST ] -> ShrubberyCreationForm\n" << C_WHITE << std::endl;
-	doExecuteFormTest( testNumber, "form isn't signed and too low grade to execute", JuanMin, SCForm );
-	doExecuteFormTest( testNumber, "form isn't signed and valid grade to execute", JuanMid, SCForm );
-	JuanMid.signForm( *SCForm );
-	doExecuteFormTest( testNumber, "form signed but too low grade to execute", JuanMin, SCForm );
-	doExecuteFormTest( testNumber, "form signed and valid grade to execute", JuanMid, SCForm );
-	invalidFile = open( "testSCFFail_shruberry", O_CREAT, 0000 );
-	if ( invalidFile == -1 )
-	{
-		delete SCForm;
-		delete SCFormFile;
-		delete RRForm;
-		delete PPForm;
-		std::cerr << "Error while trying to create a \"testSCFFail\" for testing" << std::endl;
-		return ;
-	}
-	JuanMid.signForm( *SCFormFile );
-	doExecuteFormTest( testNumber, "form signed and valid grade to execute but invalid file [ Can't write in file ]", JuanMid, SCFormFile );
-	close( invalidFile );
-
-	//Check correct execute for RobotomyRequestForm
-
-	std::cout << C_PURPLE << "\t\t[ TEST ] -> RobotomyRequestForm\n" << C_WHITE << std::endl;
-	doExecuteFormTest( testNumber, "form isn't signed and too low grade to execute", JuanMid, RRForm );
-	doExecuteFormTest( testNumber, "form isn't signed and valid grade", JuanMax, RRForm );
-	JuanMax.signForm( *RRForm );
-	doExecuteFormTest( testNumber, "form signed but too low grade to execute", JuanMin, RRForm );
-	doExecuteFormTest( testNumber, "form signed and valid grade to execute", JuanMax, RRForm );
-	doExecuteFormTest( testNumber, "form signed and valid grade to execute [ Special case for Robotomy because output can change ] ", JuanMax, RRForm );
-	doExecuteFormTest( testNumber, "form signed and valid grade to execute [ Special case for Robotomy because output can change ] ", JuanMax, RRForm );
-	doExecuteFormTest( testNumber, "form signed and valid grade to execute [ Special case for Robotomy because output can change ] ", JuanMax, RRForm );
-	doExecuteFormTest( testNumber, "form signed and valid grade to execute [ Special case for Robotomy because output can change ] ", JuanMax, RRForm );
-	doExecuteFormTest( testNumber, "form signed and valid grade to execute [ Special case for Robotomy because output can change ] ", JuanMax, RRForm );
-
-	//Check correct execute for PresidentialPardonForm
-
-	std::cout << C_PURPLE << "\t\t[ TEST ] -> PresidentialPardonForm\n" << C_WHITE << std::endl;
-	doExecuteFormTest( testNumber, "form isn't signed and too low grade to execute", JuanMid, PPForm );
-	doExecuteFormTest( testNumber, "form isn't signed and valid grade to execute", JuanMax, PPForm );
-	JuanMax.signForm( *PPForm );
-	doExecuteFormTest( testNumber, "form signed but too low grade to execute", JuanMid, PPForm );
-	doExecuteFormTest( testNumber, "form signed and valid grade to execute", JuanMax, PPForm );
-
-	//Clean all dynamic allocated memory
-	delete SCForm;
-	delete SCFormFile;
-	delete RRForm;
-	delete PPForm;
 }
 
 bool	executionQuestion( std::string testsName )
@@ -163,13 +83,8 @@ bool	executionQuestion( std::string testsName )
 
 int	main( void )
 {
-	std::cout << std::unitbuf;
-	if ( executionQuestion( "[ ShruberryCreationForm / RobotomyRequestForm / PresidentialPardonForm ] sign and exec grades" ) == true )
-		testsSCFGrades();
-	std::cout << std::endl;
-
-	if ( executionQuestion( "Bureaucrat executeForm && [ ShruberryCreationForm / RobotomyRequestForm / PresidentialPardonForm ] execute methods" ) == true )
-		testsBureaucratExecuteForm();
+	if ( executionQuestion( "Intern makeForm() method" ) == true )
+		testsInternMakeForm();
 	std::cout << std::endl;
 
 	return ( 0 );

@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:39:22 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/17 14:15:42 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:43:19 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,16 @@ std::ostream&	operator<<( std::ostream& out, const AForm& form )
 	return ( out );
 }
 
+std::ostream&	operator<<( std::ostream& out, const AForm* form )
+{
+	if ( form != NULL )
+	{
+		out << "Form name: " << form->getName() << ", Form sign grade: " \
+			<< form->getSignGrade() << ", Form exec grade: " \
+			<< form->getExecGrade() << ", Form is signed: " \
+			<< (form->getIsSigned() ? "true" : "false");	
+	}
+	else
+		out << "Empty form";
+	return ( out );
+}

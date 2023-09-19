@@ -6,7 +6,7 @@
 #    By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/22 10:08:41 by eralonso          #+#    #+#              #
-#    Updated: 2023/09/18 14:04:04 by eralonso         ###   ########.fr        #
+#    Updated: 2023/09/19 11:41:23 by eralonso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ SRC_DIRS	:=	$(subst $(SPACE),:,$(SRC_DIRS))
 
 #<--------------------------------->FILES<---------------------------------->#
 FILES		:=	main Bureaucrat AForm ShrubberyCreationForm \
-				RobotomyRequestForm PresidentialPardonForm
+				RobotomyRequestForm PresidentialPardonForm \
+				Intern
 
 #<---------------------------------->LANG<---------------------------------->#
 LANG		:=	CPP

@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 13:35:22 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/17 14:15:25 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:42:08 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ class AForm
 };
 
 std::ostream&	operator<<( std::ostream& out, const AForm& form );
+std::ostream&	operator<<( std::ostream& out, const AForm* form );
 
 #endif
