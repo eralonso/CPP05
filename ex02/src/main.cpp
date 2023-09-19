@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:53:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/18 12:47:43 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:54:56 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	testsBureaucratExecuteForm( void )
 	JuanMid.signForm( *SCForm );
 	doExecuteFormTest( testNumber, "form signed but too low grade to execute", JuanMin, SCForm );
 	doExecuteFormTest( testNumber, "form signed and valid grade to execute", JuanMid, SCForm );
-	invalidFile = open( "testSCFFail_shruberry", O_CREAT, 0000 );
+	invalidFile = open( "testSCFFail_shrubbery", O_CREAT, 0000 );
 	if ( invalidFile == -1 )
 	{
 		delete SCForm;
@@ -164,11 +164,11 @@ bool	executionQuestion( std::string testsName )
 int	main( void )
 {
 	std::cout << std::unitbuf;
-	if ( executionQuestion( "[ ShruberryCreationForm / RobotomyRequestForm / PresidentialPardonForm ] sign and exec grades" ) == true )
+	if ( executionQuestion( "[ ShrubberyCreationForm / RobotomyRequestForm / PresidentialPardonForm ] sign and exec grades" ) == true )
 		testsSCFGrades();
 	std::cout << std::endl;
 
-	if ( executionQuestion( "Bureaucrat executeForm && [ ShruberryCreationForm / RobotomyRequestForm / PresidentialPardonForm ] execute methods" ) == true )
+	if ( executionQuestion( "Bureaucrat executeForm && [ ShrubberyCreationForm / RobotomyRequestForm / PresidentialPardonForm ] execute methods" ) == true )
 		testsBureaucratExecuteForm();
 	std::cout << std::endl;
 

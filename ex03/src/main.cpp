@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:53:21 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/19 13:54:42 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:50:04 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void	testsInternMakeForm( void )
 {
 	unsigned int	testNumber;
 
+	testNumber = 0;
 	// Invalid forms
 	doInternMakeFormTest( testNumber, "Invalid form", "shrubery cation", "SCInvalidFTarget" );
 
 	doInternMakeFormTest( testNumber, "Invalid form", "robotomy request ", "RRInvalidFTarget" );
 
 	doInternMakeFormTest( testNumber, "Invalid form", "Presidential pardon", "PPInvalidFTarget" );
-
 
 	// Valid forms
 	doInternMakeFormTest( testNumber, "Valid ShrubberyCreationForm", "shrubbery creation", "SCFTarget" );

@@ -6,7 +6,7 @@
 /*   By: eralonso <eralonso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 18:20:02 by eralonso          #+#    #+#             */
-/*   Updated: 2023/09/17 18:24:47 by eralonso         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:54:07 by eralonso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	ShrubberyCreationForm::FormExecute( void ) const
 {
 	std::ofstream	out;
 
-	out.open( _target + "_shruberry" );
+	out.open( _target + "_shrubbery" );
 	if ( out.is_open() == false )
 	{
-		std::cerr << "Error trying to open file " << _target + "_shruberry"  << std::endl;
+		std::cerr << "Error trying to open file " << _target + "_shrubbery"  << std::endl;
 		return ;
 	}
 	out << "\
